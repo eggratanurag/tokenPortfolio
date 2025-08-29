@@ -1,15 +1,9 @@
-import { createConfig, http } from 'wagmi'
-import { mainnet } from 'wagmi/chains'
-import { injected, coinbaseWallet } from 'wagmi/connectors'
+import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+import { mainnet, polygon, optimism, arbitrum, base, zora } from 'wagmi/chains'
 
-// Simplified configuration for development
-export const developmentConfig = createConfig({
-  chains: [mainnet],
-  connectors: [
-    injected(), // MetaMask and other injected wallets
-    coinbaseWallet({ appName: 'Portfolio Dashboard' }), // Coinbase Wallet
-  ],
-  transports: {
-    [mainnet.id]: http(),
-  },
+export const config = getDefaultConfig({
+  appName: 'Portfolio Dashboard',
+  projectId: 'YOUR_PROJECT_ID', // Get one from https://cloud.walletconnect.com
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  ssr: true, // If your dApp uses SSR (Next.js, etc.)
 })
