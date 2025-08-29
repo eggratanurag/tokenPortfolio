@@ -66,7 +66,7 @@ export function WalletConnectButton() {
                   )}
                 </div>
               )}
-              {chain.name}
+              {/* {chain.name} */}
             </button>
 
             <button
