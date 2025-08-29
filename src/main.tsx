@@ -5,6 +5,7 @@ import App from './App'
 import { Provider } from "react-redux";
 import { store, persistor  } from "./store/store";
 import { PersistGate } from 'redux-persist/integration/react';
+import WagmiProvider from './providers/WagmiProvider'
 
 // Force dark mode
 document.documentElement.classList.add('dark');
@@ -14,7 +15,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <App />
+        <WagmiProvider>
+          <App />
+        </WagmiProvider>
       </PersistGate>
     </Provider>
   </StrictMode>,

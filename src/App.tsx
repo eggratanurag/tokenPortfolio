@@ -1,8 +1,8 @@
 import './App.css'
-import { tokenIcon, walletIcon } from '@/assets/export';
-import { Button } from "@/components/reusableComponents/button"
+import { tokenIcon } from '@/assets/export';
 import { DataTableDemo } from "@/components/reusableComponents/table"
 import PortfolioSummary from "@/components/reusableComponents/PortfolioSummary"
+import { WalletConnectButton } from "@/components/reusableComponents/WalletConnectButton"
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
           <img src={tokenIcon} />
           <p className='font-[600] text-white text-xl' >Token Portfolio</p>
         </div>
-        <Button className='rounded-full bg-neonGreen' leftIcon={<img className='w-4' src={walletIcon} />}>Connect Wallet</Button>
+        <WalletConnectButton />
       </div>
 
       <div className=' w-full sm:p-[28px] text-textSlateWhite '>

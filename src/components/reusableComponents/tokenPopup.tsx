@@ -337,6 +337,7 @@ const TokenSelectorPopup: React.FC<TokenSelectorPopupProps> = ({ isOpen, onClose
                     <Button 
                         onClick={handleAddToWatchlist}
                         disabled={selectedTokens.size === 0}
+                        className='w-fit ml-auto '
                     >
                         {selectedTokens.size === 0 
                             ? 'Add to Watchlist' 

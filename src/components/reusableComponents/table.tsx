@@ -389,7 +389,7 @@ export function DataTableDemo() {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead className="text-graySubText" key={header.id}>
+                    <TableHead className="pl-5 text-graySubText" key={header.id}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -410,7 +410,7 @@ export function DataTableDemo() {
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell className="text-textSlateWhite text-start" key={cell.id}>
+                    <TableCell className="pl-5 text-textSlateWhite text-start" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
