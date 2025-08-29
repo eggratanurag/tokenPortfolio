@@ -214,13 +214,6 @@ The application is fully optimized for mobile devices with:
 - **Mobile-optimized navigation**
 - **Consistent dark theme across all devices**
 
-## 🔒 Data Security
-
-- **Local Storage**: User data stored locally in browser
-- **No External Authentication**: No sensitive data transmitted
-- **API Rate Limiting**: Respectful API usage
-- **Privacy Focused**: User data remains on their device
-
 ## 🚀 Deployment
 
 ### **Build Process**
@@ -229,30 +222,12 @@ npm run build    # Create production build
 npm run preview  # Preview production build locally
 ```
 
-### **Deployment Options**
-- **Vercel**: Zero-config deployment
-- **Netlify**: Simple static site hosting
-- **GitHub Pages**: Free hosting for open source projects
-- **Custom Server**: Deploy to any Node.js server
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 Developer
 
 **Your Name** - Full Stack Developer
-- **GitHub**: [@yourusername](https://github.com/yourusername)
-- **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- **Portfolio**: [Your Portfolio](https://yourportfolio.com)
+- **GitHub**: [@yourusername](https://github.com/eggratanurag)
+- **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/eggrat)
+- **Portfolio**: [Your Portfolio](https://anuragcodes.dev)
 
 ## 🙏 Acknowledgments
 

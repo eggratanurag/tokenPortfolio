@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 
@@ -7,7 +7,7 @@ interface SparklineChartProps {
   priceChange: number;
 }
 
-const SparklineChart: React.FC<SparklineChartProps> = React.memo(({ data, priceChange }) => {
+const SparklineChart: React.FC<SparklineChartProps> = React.memo(({ data, priceChange }: SparklineChartProps) => {
   const isPositive = priceChange >= 0;
   
   // Memoize options to prevent recreation on every render
@@ -102,6 +102,7 @@ const SparklineChart: React.FC<SparklineChartProps> = React.memo(({ data, priceC
 
   return (
     <div className="w-20 h-12">
+      {/* @ts-expect-error react-apexcharts has incomplete TypeScript definitions */}
       <ReactApexChart
         options={options}
         series={series}

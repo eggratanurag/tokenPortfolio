@@ -152,7 +152,7 @@ export function DataTableDemo() {
     {
       accessorKey: "holdings",
       header: () => <div className="holdings-column-header">Holdings</div>,
-      cell: ({ row }) => {
+      cell: ({ row }: { row: any }) => {
         const token = row.original;
         const tokenId = token.id;
 
@@ -161,12 +161,25 @@ export function DataTableDemo() {
           inputRefs.current[tokenId] = React.createRef<HTMLInputElement>();
         }
 
+        return (
+          <div className="w-48"> {/* Fixed width container */}
+            <HoldingsInput
+              key={`holdings-${tokenId}`}
+              value={token.holdings || 0}
+              onSave={handleHoldingsUpdate}
+              tokenId={tokenId}
+              isEditing={editingHoldings[tokenId] || false}
+              setIsEditing={(editing) => setEditingHoldings(prev => ({ ...prev, [tokenId]: editing }))}
+              inputRef={inputRefs.current[tokenId] as React.RefObject<HTMLInputElement>}
+            />
+          </div>
+        );
       },
     },
     {
       accessorKey: "value",
       header: "Value",
-      cell: ({ row }) => {
+      cell: ({ row }: { row: any }) => {
         const token = row.original;
         const holdings = token.holdings || 0;
         const price = token.current_price || 0;
@@ -182,7 +195,7 @@ export function DataTableDemo() {
     {
       id: "actions",
       enableHiding: false,
-      cell: ({ row }) => {
+      cell: ({ row }: { row: any }) => {
         const token = row.original;
 
         return (
@@ -282,7 +295,7 @@ export function DataTableDemo() {
       if (col.accessorKey === 'holdings') {
         return {
           ...col,
-          cell: ({ row }) => {
+          cell: ({ row }: { row: any }) => {
             const token = row.original;
             const tokenId = token.id;
 
@@ -292,17 +305,16 @@ export function DataTableDemo() {
             }
 
             return (
-              <div className=" "> {/* Fixed width container */}
-
-                                 <HoldingsInput
-                   key={`holdings-${tokenId}`}
-                   value={token.holdings || 0}
-                   onSave={handleHoldingsUpdate}
-                   tokenId={tokenId}
-                   isEditing={editingHoldings[tokenId] || false}
-                   setIsEditing={(editing) => setEditingHoldings(prev => ({ ...prev, [tokenId]: editing }))}
-                   inputRef={inputRefs.current[tokenId]}
-                  />
+              <div className="w-48"> {/* Fixed width container */}
+                <HoldingsInput
+                  key={`holdings-${tokenId}`}
+                  value={token.holdings || 0}
+                  onSave={handleHoldingsUpdate}
+                  tokenId={tokenId}
+                  isEditing={editingHoldings[tokenId] || false}
+                  setIsEditing={(editing) => setEditingHoldings(prev => ({ ...prev, [tokenId]: editing }))}
+                  inputRef={inputRefs.current[tokenId] as React.RefObject<HTMLInputElement>}
+                />
               </div>
             );
           }

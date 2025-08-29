@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useAppSelector } from '@/store/storeHooks';
 import DonutChart from './../ui/donutChart';
 import { getChartColor } from '@/utils/colorPalette';
