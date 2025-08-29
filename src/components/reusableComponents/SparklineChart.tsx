@@ -102,7 +102,6 @@ const SparklineChart: React.FC<SparklineChartProps> = React.memo(({ data, priceC
 
   return (
     <div className="w-20 h-12">
-      {/* @ts-expect-error react-apexcharts has incomplete TypeScript definitions */}
       <ReactApexChart
         options={options}
         series={series}

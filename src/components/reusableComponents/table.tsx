@@ -39,7 +39,7 @@ export function DataTableDemo() {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
   const [editingHoldings, setEditingHoldings] = React.useState<Record<string, boolean>>({});
   const [isRefreshing, setIsRefreshing] = React.useState(false);
-  const inputRefs = React.useRef<Record<string, React.RefObject<HTMLInputElement>>>({});
+  const inputRefs = React.useRef<Record<string, React.RefObject<HTMLInputElement | null>>>({});
 
   // Refresh function to fetch updated data for all watchlist tokens
   const handleRefresh = React.useCallback(async () => {
@@ -161,6 +161,9 @@ export function DataTableDemo() {
           inputRefs.current[tokenId] = React.createRef<HTMLInputElement>();
         }
 
+        const inputRef = inputRefs.current[tokenId];
+        if (!inputRef) return null;
+        
         return (
           <div className="w-48"> {/* Fixed width container */}
             <HoldingsInput
@@ -170,7 +173,7 @@ export function DataTableDemo() {
               tokenId={tokenId}
               isEditing={editingHoldings[tokenId] || false}
               setIsEditing={(editing) => setEditingHoldings(prev => ({ ...prev, [tokenId]: editing }))}
-              inputRef={inputRefs.current[tokenId] as React.RefObject<HTMLInputElement>}
+              inputRef={inputRef}
             />
           </div>
         );
@@ -292,7 +295,7 @@ export function DataTableDemo() {
   // Update columns to use the holdings handler
   const columnsWithHoldings = React.useMemo(() => {
     return columns.map(col => {
-      if (col.accessorKey === 'holdings') {
+      if ('accessorKey' in col && col.accessorKey === 'holdings') {
         return {
           ...col,
           cell: ({ row }: { row: any }) => {
@@ -304,6 +307,9 @@ export function DataTableDemo() {
               inputRefs.current[tokenId] = React.createRef<HTMLInputElement>();
             }
 
+            const inputRef = inputRefs.current[tokenId];
+            if (!inputRef) return null;
+            
             return (
               <div className="w-48"> {/* Fixed width container */}
                 <HoldingsInput
@@ -313,7 +319,7 @@ export function DataTableDemo() {
                   tokenId={tokenId}
                   isEditing={editingHoldings[tokenId] || false}
                   setIsEditing={(editing) => setEditingHoldings(prev => ({ ...prev, [tokenId]: editing }))}
-                  inputRef={inputRefs.current[tokenId] as React.RefObject<HTMLInputElement>}
+                  inputRef={inputRef}
                 />
               </div>
             );

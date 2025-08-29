@@ -11,7 +11,7 @@ const HoldingsInput = ({ value, onSave, tokenId, isEditing, setIsEditing, inputR
   tokenId: string;
   isEditing: boolean;
   setIsEditing: (editing: boolean) => void;
-  inputRef: React.RefObject<HTMLInputElement>;
+  inputRef: React.RefObject<HTMLInputElement | null>;
 }) => {
   const [inputValue, setInputValue] = React.useState(value.toString());
 

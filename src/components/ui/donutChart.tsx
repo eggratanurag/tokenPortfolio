@@ -56,7 +56,6 @@ const Index: React.FC<DonutChartProps> = memo(
       <div className="flex flex-col gap-3 w-full md:flex-row items-start">
         {/* Donut Chart */}
         <div className="flex h-full w-full sm:w-auto  items-center justify-center">
-        {/* @ts-expect-error react-apexcharts has incomplete TypeScript definitions */}
         <ReactApexChart
           series={series ?? []}
           width={width}
