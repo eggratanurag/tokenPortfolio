@@ -210,9 +210,9 @@ h1 {
 
 /* Ensure buttons and inputs use dark theme */
 button, input, select, textarea {
-  background-color: #27272A !important;
+  /* background-color: #27272A !important;
   color: #F4F4F5 !important;
-  border-color: #FFFFFF14 !important;
+  border-color: #FFFFFF14 !important; */
 }
 
 /* Force dark theme for dropdowns and modals */

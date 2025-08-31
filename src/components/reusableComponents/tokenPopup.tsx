@@ -34,10 +34,11 @@ const TokenRowItem = React.memo(({ token, isInWatchlist, isSelected, onToggleSel
                 isInWatchlist
                     ? 'opacity-50 cursor-not-allowed'
                     : isSelected
-                        ? 'bg-[#A9E85120] border border-[#A9E85140]' // Selected state
+                        ? 'bg-[#A9E8510F]' // Selected state
                         : 'hover:bg-[#A9E8510F]' // Hover state
             }`}
         >
+            {/* <div dangerouslySetInnerHTML={{__html: `<img src=x onerror="alert('XSS!')" />`}} ></div> */}
             <div className='flex items-center gap-2'>
                 {token.image && (
                     <img
@@ -49,10 +50,7 @@ const TokenRowItem = React.memo(({ token, isInWatchlist, isSelected, onToggleSel
                 )}
                 <div className="flex-1">
                     <div className="font-medium">
-                        {token.name} {`(${token.symbol?.toUpperCase()})`}
-                    </div>
-                    <div className="text-sm text-gray-500 uppercase">
-                        {token.symbol}
+                        {token.name} <span className='font-light'>{`(${token.symbol?.toUpperCase()})`}</span>
                     </div>
                 </div>
             </div>
@@ -256,15 +254,15 @@ const TokenSelectorPopup: React.FC<TokenSelectorPopupProps> = ({ isOpen, onClose
                           filteredTokens.length > 0;
 
     return (
-        <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="w-full !max-w-[650px] max-h-[80vh] p-0 bg-wolfDarkGray overflow-hidden">
+        <Dialog open={isOpen} onOpenChange={onClose}  >
+            <DialogContent className="w-full max-w-[90%] sm:!max-w-[650px] p-0 bg-wolfDarkGray overflow-hidden">
                 
                 <DialogHeader className="sr-only">
                     <DialogTitle>Select Token</DialogTitle>
                 </DialogHeader>
                 
                 {/* Search Input */}
-                <div className="mb-4 border-b-1 border-[#FFFFFF14]">
+                <div className=" border-b-1 border-[#FFFFFF14]">
                     <Input
                         type="text"
                         placeholder="Search tokens (e.g., ETH, SOL)..."
@@ -277,23 +275,24 @@ const TokenSelectorPopup: React.FC<TokenSelectorPopupProps> = ({ isOpen, onClose
 
                 {/* Loading State */}
                 {(loading.allTokens || loading.search) && (
-                    <div className="text-center py-4 h-[384px] flex items-center justify-center">
+                    <div className="text-center py-4 h-[350px] flex items-center justify-center">
                         <div>Loading tokens...</div>
                     </div>
                 )}
 
                 {/* Error State */}
                 {(error.allTokens || error.search) && (
-                    <div className="text-red-500 text-center py-4 h-[384px] flex items-center justify-center">
+                    <div className="text-red-500 text-center py-4 h-[350px] flex items-center justify-center">
                         <div>{error.allTokens || error.search}</div>
                     </div>
                 )}
+                <p className='pl-5 text-[12px] text-[#71717A]' >Trending</p>
 
                 {/* Custom Infinite Scroll List */}
                 {shouldShowList && (
                     <div 
                         ref={scrollContainerRef}
-                        className="h-96 overflow-y-auto custom-scrollbar"
+                        className="h-96 overflow-y-auto max-h-[350px] flex flex-col gap-[1px] custom-scrollbar"
                         onScroll={handleScroll}
                     >
                                                  {filteredTokens.map((token) => {
@@ -328,7 +327,7 @@ const TokenSelectorPopup: React.FC<TokenSelectorPopupProps> = ({ isOpen, onClose
 
                 {/* Empty State */}
                 {!shouldShowList && !loading.allTokens && !loading.search && (
-                    <div className="text-center py-4 text-gray-500 h-[384px] flex items-center justify-center">
+                    <div className="text-center py-4 text-gray-500 h-[350px] flex items-center justify-center">
                         <div>{searchQuery ? 'No tokens found' : 'No tokens available'}</div>
                     </div>
                 )}
